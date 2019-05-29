@@ -1,12 +1,12 @@
 # digitransit-dem-tools
 
-Command line tool for downloading National Land Survey [KM2-dataset](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/elevation-model-2-m) and creating an optimized digital elevation model (DEM) for Digitransit. 
+Command line tool for downloading National Land Survey [KM2-dataset](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/elevation-model-2-m) and [KM10-dataset](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/elevation-model-10-m) (optionally also [Ortophotos](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/aerial-photographs)) and creating an optimized digital elevation model (DEM) for Digitransit. 
 
 ### Getting started
 
 File | Description
 --- | --- 
-`nls-dem-downloader.py` | Downloads KM2 and KM10 DEM dataset tiles from NLS API
+`nls-dem-downloader.py` | Downloads KM2 and KM10 DEM or ortophotos dataset tiles from NLS API
 `gdal_create_optimized_dem.sh` |  Crops and optimizes DEM dataset tiles into a single GeoTiff using commandline GDAL binaries and gdal_calc.py 
 `download_and_optimize_dem_data.sh` | Chains together `nls-dem-downloader.py` and `gdal_create_optimized_dem.sh`
 `config.json` | Contains NLS API token and predefined tiles for different Digitransit areas (HSL, Waltti and cities)
