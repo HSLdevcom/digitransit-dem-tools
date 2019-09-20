@@ -76,5 +76,9 @@ echo_time "3. Converting elevation unit from meters to decimeters. Round 32 bit 
 
 gdal_calc.py -A $reproj --outfile=$finaldem --type UInt16 --format=GTiff --co COMPRESS=LZW --co TILED=YES --co BIGTIFF=YES --co NUM_THREADS=ALL_CPUS --calc="numpy.around(10*(A*(A>0)))" --NoDataValue=0
 
+echo_time "4. Unsetting the NoData-tag due to OpenTripPlanner v.1.4.0 having trouble with it"
+
+gdal_edit.py -unsetnodata $finaldem
+
 duration=$SECONDS
 echo_time "Finished gdal_create_optimized_dem.sh. $(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
