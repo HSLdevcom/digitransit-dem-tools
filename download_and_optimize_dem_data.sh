@@ -33,7 +33,7 @@ else
 	exit 1
 fi
 
-output_dir="output-$dataset-$(date +"%Y%m%d_%H%M")"
+output_dir="/output/output-$dataset-$(date +"%Y%m%d_%H%M")"
 dem_data_dl_dir="km2-data-$(date +"%Y%m%d_%H%M")"
 file_paths="km2_tif_file_paths-$(date +"%Y%m%d_%H%M").txt"
 dataset_vrt="$dataset-$(date +"%Y%m%d_%H%M").vrt"
