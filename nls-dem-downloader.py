@@ -19,7 +19,8 @@ optional arguments:
   -orto, --orto  Download orto tiles instead of default KM2 tiles
 
 config.json contains NLS API key and map tile keys as lists for HSL and WALTTI areas. The script uses map tile keys
-to parse the full KM2 product list for needed files. 
+to parse the full KM2 product list for needed files. If environment variable 'NLS_API_TOKEN' exists, the scripts
+uses that value instead of config.json field API_TOKEN value.
 
 Installation:
 Requires Python 3.5 or later and requests
@@ -117,7 +118,8 @@ def load_conf(args):
     with open(args.config_json, 'r') as f:
         config = json.load(f)
 
-    api_token = config['API_TOKEN']
+    # Use Env variable NLS_API_TOKEN if it exists, otherwise use config.json field API_TOKEN
+    api_token = os.getenv('NLS_API_TOKEN', config['API_TOKEN'])
 
     if args.km10:
         dataset = 'korkeusmalli/hila_10m'
