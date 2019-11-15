@@ -2,6 +2,8 @@
 
 Command line tool for downloading National Land Survey [KM2-dataset](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/elevation-model-2-m) and [KM10-dataset](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/elevation-model-10-m) (optionally also [Ortophotos](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/aerial-photographs)) and creating an optimized digital elevation model (DEM) for Digitransit. 
 
+Quick start: [run with docker](#Run-with-Docker)
+
 ### Getting started
 
 File | Description
@@ -106,5 +108,30 @@ bash download_and_optimize_dem KUOPIO area-extents/kuopio.geojson
 Downloads all available Kuopio specific KM2-tiles and clip the raster to the `kuopio.geojson`.
 
 
-### TODO (to be dockerized)
+# Run with Docker:
+
+## Build image:
+
+`
+docker build -t hsldevcom/digitransit-dem-tools .
+`
+## Run
+Mount the directory where you want the intermediate and finished DEM files stored in host machine. Pass script parameters as environment variables.
+
+Variable NLS_API_TOKEN is always required. Variable AREA_CODE defines the the tiles to be downloaded. Variable CLIPPER clips the downloaded data to a more exact area extent and is optional.
+
+## Examples: 
+
+Test script by downloading 4 tiles from the center of Helsinki and clip the with `test-clipper.json`. Files are stored in host machine directory `<current-path>/output`
+
+`
+docker run -v ${pwd}/output:/output -e NLS_API_TOKEN='my-token' -e TEST='true' digitransit-dem-tools
+`
+
+Download tiles of HSL area and clip the to extent of hsl.geojson:
+
+`
+docker run -v ${pwd}/output:/output -e NLS_API_TOKEN='my-token' -e AREA_CODE=HSL -e CLIPPER='area-extents/hsl.geojson' digitransit-dem-tools
+`
+
 
