@@ -9,10 +9,10 @@ ENV VENV $WORK/venv
 
 RUN pwd
 RUN apt-get update && \
-    apt-get install -y software-properties-common && \
+    apt-get install software-properties-common -y --no-install-recommends && \
     add-apt-repository ppa:ubuntugis/ppa && \
-    apt-get install gdal-bin python-gdal -y && \ 
-    apt-get install python3-pip -y --no-install-recommends && \
+    apt-get install gdal-bin python-gdal python3-pip -y --no-install-recommends && \ 
+    rm -rf /var/lib/apt/lists/* && \
     pip3 install virtualenv
 
 RUN virtualenv -p python3 $VENV 
