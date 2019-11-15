@@ -6,12 +6,20 @@ Command line script for downloading KM2 and KM10 Digital Elevation Model dataset
 
 Usage: python nls-dem-downloader.py -h
 
+positional arguments:
+  config_json    config.json containing API key and predefined tiles for
+                 different areas
+  area_key       'HSL', 'WALTTI' etc.
+  output_dir     Output directory
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -v, --verbose  Write script output to stdout
+  -km10, --km10  Download KM10 tiles instead of default KM2 tiles
+  -orto, --orto  Download orto tiles instead of default KM2 tiles
+
 config.json contains NLS API key and map tile keys as lists for HSL and WALTTI areas. The script uses map tile keys
 to parse the full KM2 product list for needed files. 
-
-Optional arguments:
---km10 will get you get KM10 tiles instead of KM2 tiles.
---orto will get you orthophoto tiles instead of KM2/Km10 DEM data.
 
 Installation:
 Requires Python 3.5 or later and requests
