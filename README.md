@@ -1,3 +1,5 @@
+> **_NOTE:_**  This repository is archived! dem-tools can be found under [hsldevcom\digitransit-tools](https://www.github.com/hsldevcom/digitransit-tools).
+
 # digitransit-dem-tools
 
 Command line tool for downloading National Land Survey [KM2-dataset](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/elevation-model-2-m) and [KM10-dataset](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/elevation-model-10-m) (optionally also [Ortophotos](https://www.maanmittauslaitos.fi/en/maps-and-spatial-data/expert-users/product-descriptions/aerial-photographs)) and creating an optimized digital elevation model (DEM) for Digitransit. 
